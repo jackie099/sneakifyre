@@ -56,7 +56,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -137,6 +147,7 @@ public class Camera2BasicFragment extends Fragment
 
         @Override
         public void onOpened(@NonNull CameraDevice currentCameraDevice) {
+
           // This method is called when the camera is opened.  We start camera preview here.
           cameraOpenCloseLock.release();
           cameraDevice = currentCameraDevice;
@@ -295,11 +306,55 @@ public class Camera2BasicFragment extends Fragment
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    try {
-      classifier = new ImageClassifier(getActivity());
-    } catch (IOException e) {
-      Log.e(TAG, "Failed to initialize an image classifier.");
+    final StringBuffer[] json = new StringBuffer[1];
+    Thread thread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        URL urlForGetRequest = null;
+        try {
+          urlForGetRequest = new URL("https://gateway.stockx.com/public/v1/browse?limit=50");
+          String readLine = null;
+          HttpURLConnection connection = (HttpURLConnection) urlForGetRequest.openConnection();
+          connection.setRequestMethod("GET");
+          connection.setRequestProperty("x-api-key", "B1sR9t386d6UVO6aI7KRf91gLaUywqEK1TLBGsXv"); // set userId its a sample here
+          int responseCode = connection.getResponseCode();
+          if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            while ((readLine = in .readLine()) != null) {
+              response.append(readLine);
+            } in .close();
+            // print result
+            System.out.println("JSON String Result " + response.toString());
+            json[0] = response;
+            //GetAndPost.POSTRequest(response.toString());
+          } else {
+            System.out.println("GET NOT WORKED");
+          }
+
+        } catch (MalformedURLException e) {
+          e.printStackTrace();
+        } catch (ProtocolException e) {
+          e.printStackTrace();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+
+      }
+    });
+    thread.start();
+    try { thread.join(3000); } catch (InterruptedException e) { e.printStackTrace(); }
+    if(json != null){
+      try {
+        JSONObject jsonObject = new JSONObject(json[0].toString());
+        classifier = new ImageClassifier(getActivity(),jsonObject);
+
+      } catch (JSONException | IOException e) {
+        e.printStackTrace();
+      }
     }
+
     startBackgroundThread();
   }
 

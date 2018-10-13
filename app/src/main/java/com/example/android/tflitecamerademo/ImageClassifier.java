@@ -20,6 +20,8 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,6 +36,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.tensorflow.lite.Interpreter;
 
 /** Classifies images with Tensorflow Lite. */
@@ -91,9 +97,10 @@ public class ImageClassifier {
               return (o1.getValue()).compareTo(o2.getValue());
             }
           });
-
+    private JSONObject jsonObject;
   /** Initializes an {@code ImageClassifier}. */
-  ImageClassifier(Activity activity) throws IOException {
+  ImageClassifier(Activity activity, JSONObject jsonObject) throws IOException {
+      this.jsonObject = jsonObject;
     tflite = new Interpreter(loadModelFile(activity));
     labelList = loadLabelList(activity);
     imgData =
@@ -123,10 +130,29 @@ public class ImageClassifier {
 
     // print the results
     String textToShow = printTopKLabels();
-    textToShow = Long.toString(endTime - startTime) + "ms" + textToShow;
+    try {
+      JSONArray jsonArray = jsonObject.getJSONArray("Products");
+      String price = "";
+      String highestBid= "";
+      String releaseDate = "";
+      for(int i =0; i < jsonArray.length() ; ++i){
+          String check = labelKey.replaceAll("\\W","").toLowerCase();
+          String checkAPI = jsonArray.getJSONObject(i).getString("title").replaceAll("\\W","").toLowerCase();
+          if(checkAPI.contains(check)){
+              price = jsonArray.getJSONObject(i).getString("retailPrice");
+              highestBid = jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid");
+              releaseDate = jsonArray.getJSONObject(i).getString("releaseDate");
+              break;
+          }
+      }
+
+      textToShow = textToShow+"\nPrice:$"+price+"\n" +
+              "Highest Bid:$"+highestBid+"\nRelease Date:"+releaseDate;
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
     return textToShow;
   }
-
   void applyFilter(){
     int num_labels =  labelList.size();
 
@@ -201,7 +227,7 @@ public class ImageClassifier {
     long endTime = SystemClock.uptimeMillis();
     Log.d(TAG, "Timecost to put values into ByteBuffer: " + Long.toString(endTime - startTime));
   }
-
+    public String labelKey;
   /** Prints top-K labels, to be shown in UI as the results. */
   private String printTopKLabels() {
     for (int i = 0; i < labelList.size(); ++i) {
@@ -213,9 +239,12 @@ public class ImageClassifier {
     }
     String textToShow = "";
     final int size = sortedLabels.size();
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < 1; ++i) {
       Map.Entry<String, Float> label = sortedLabels.poll();
       textToShow = String.format("\n%s: %4.2f",label.getKey(),label.getValue()) + textToShow;
+      this.labelKey = label.getKey();
+      Log.i("zzzz",label.getKey());
+
     }
     return textToShow;
   }

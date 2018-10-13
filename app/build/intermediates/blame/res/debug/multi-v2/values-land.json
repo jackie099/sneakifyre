@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jackie099/mhacks/tensorflow-for-poets-2/android/tflite/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "X:\\github\\sneakifyre\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "/Users/jackie099/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/060438e9a1b72708d97272cb8e9f94ca/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\Kevin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.2.0.aar\\b8a8e126d54545f2b07626cecceb2f65\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/jackie099/.gradle/caches/transforms-1/files-1.1/design-25.2.0.aar/b54cdfc6de1f5b55686f06c9fba5b4cf/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\Kevin\\.gradle\\caches\\transforms-1\\files-1.1\\design-25.2.0.aar\\1cd709c5277bd5cec3d6a82869627253\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

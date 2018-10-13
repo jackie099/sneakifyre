@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/jackie099/mhacks/tensorflow-for-poets-2/android/tflite/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+            "outputFile": "X:\\github\\sneakifyre\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "/Users/jackie099/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.2.0.aar/060438e9a1b72708d97272cb8e9f94ca/res/values-v14/values-v14.xml",
+                    "source": "C:\\Users\\Kevin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.2.0.aar\\b8a8e126d54545f2b07626cecceb2f65\\res\\values-v14\\values-v14.xml",
                     "from": {
                         "startLines": "2,7,8,9,15,21,22,23,24,25,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
