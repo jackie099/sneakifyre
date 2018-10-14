@@ -6,7 +6,7 @@ Android application that uses image recognition to classify a shoe and return it
 
 - Using [TensorFlow Lite for Android](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/lite/java/demo)
 - Using [TensorFlow](https://github.com/tensorflow/tensorflow) to train sneaker detection model
-- Using StockX RESTful API for shoe data
+- Using StockX RESTful API for shoe data. https://stockx.com/
 
 ## Authors
 - Zhenghui Li
