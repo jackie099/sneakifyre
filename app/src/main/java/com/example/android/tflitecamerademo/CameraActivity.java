@@ -17,6 +17,8 @@ package com.example.android.tflitecamerademo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -32,11 +34,15 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 /** Main {@code Activity} class for the Camera app. */
-public class CameraActivity extends Activity {
+public class CameraActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+    setSupportActionBar(myToolbar);
+    //getSupportActionBar().setDisplayShowTitleEnabled(true);
+
     setContentView(R.layout.activity_camera);
     if (null == savedInstanceState) {
       getFragmentManager()
