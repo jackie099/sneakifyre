@@ -142,7 +142,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="0dp"
-        android:layout_marginStart="192dp"
+
         android:background="@drawable/round_red"
         android:orientation="horizontal">
 
