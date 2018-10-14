@@ -244,7 +244,16 @@ public class Camera2BasicFragment extends Fragment
                                         Uri.parse(classifier.getShoeUrl()));
                         startActivity(viewIntent);
                       }
-
+                    }
+                  });
+                  red.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View arg0) {
+                      if(!classifier.getShoeUrl().equals("")){
+                        Intent viewIntent =
+                                new Intent("android.intent.action.VIEW",
+                                        Uri.parse(classifier.getShoeUrl()));
+                        startActivity(viewIntent);
+                      }
                     }
                   });
 
@@ -335,6 +344,7 @@ public class Camera2BasicFragment extends Fragment
     green = view.findViewById(R.id.green);
     greenPrice = view.findViewById(R.id.greenPrice);
     redPrice = view.findViewById(R.id.redPrice);
+    red = view.findViewById(R.id.red);
   }
 
   /** Load the model and labels. */
