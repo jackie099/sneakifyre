@@ -48,9 +48,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -84,6 +86,8 @@ import java.util.concurrent.TimeUnit;
 /** Basic fragments for the Camera. */
 public class Camera2BasicFragment extends Fragment
         implements FragmentCompat.OnRequestPermissionsResultCallback {
+
+
 
   /** Tag for the {@link Log}. */
   private static final String TAG = "TfLiteCameraDemo";

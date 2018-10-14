@@ -19,6 +19,16 @@
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground">
 
+    <android.support.v7.widget.Toolbar android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
     <com.example.android.tflitecamerademo.AutoFitTextureView
         android:id="@+id/texture"
         android:layout_width="wrap_content"
@@ -50,20 +60,19 @@
 
     <LinearLayout
         android:layout_width="192dp"
-        android:layout_height="61dp"
+        android:layout_height="71dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginBottom="0dp"
-        android:background="@color/stockx_green"
-        android:orientation="horizontal"
-        android:id="@+id/green">
-
+        android:id="@+id/green"
+        android:background="@drawable/round"
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.5"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight="0.6"
             android:orientation="vertical"
             android:textAlignment="center">
 
@@ -71,46 +80,140 @@
                 android:id="@+id/greenPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="US$235"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lowest_ask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lowest Ask"
+                android:textColor="#c6e6c2"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:paddingRight="2dp">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#328827" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_buy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_bid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="or Bid"
+                android:textColor="#c6e6c2"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="192dp"
+        android:layout_height="71dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="192dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/round_red"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight="0.6"
+            android:orientation="vertical"
+            android:textAlignment="center">
+
+            <TextView
+                android:id="@+id/redPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="US$235"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Lowest Ask"
-                android:textColor="#ffffff" />
+                android:text="Highest Bid"
+                android:textColor="#ffcfcf"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:paddingRight="2dp">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#C84E4D" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Buy"
+                android:text="Sell"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="or Bid"
-                android:textColor="#ffffff" />
+                android:textColor="#ffcfcf"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

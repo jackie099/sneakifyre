@@ -13,12 +13,42 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+<!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/my_toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="?attr/colorPrimary"-->
+    <!--android:elevation="4dp"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
+
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
     tools:context="com.example.android.tflitecamerademo.CameraActivity" >
+    <android.support.v7.widget.Toolbar android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/stockx_green"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:singleLine="true"
+            android:text="SneakiFyre"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
 </FrameLayout>
