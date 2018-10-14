@@ -143,17 +143,17 @@ public class ImageClassifier {
       for(int i =0; i < jsonArray.length() ; ++i){
           String check = labelKey.replaceAll("\\W","").toLowerCase();
           String checkAPI = jsonArray.getJSONObject(i).getString("title").replaceAll("\\W","").toLowerCase();
-          if(labelValue < .30){
-              price = "";
-              highestBid = "";
+          if(labelValue < .33){
+              price = "$ -";
+              highestBid = "$ -";
               releaseDate = "";
               shoeUrl = "";
-              shoeName = "";
+              shoeName = "NO SHOE DETECTED";
           }
           else if( checkAPI.contains(check)){
               price ="$"+ jsonArray.getJSONObject(i).getString("retailPrice");
               highestBid = "$"+jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid");
-              releaseDate = jsonArray.getJSONObject(i).getString("releaseDate");
+              releaseDate = "Release Date:"+jsonArray.getJSONObject(i).getString("releaseDate");
               shoeUrl = "https://stockx.com/"+jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
               shoeName = jsonArray.getJSONObject(i).getString("title");
               break;

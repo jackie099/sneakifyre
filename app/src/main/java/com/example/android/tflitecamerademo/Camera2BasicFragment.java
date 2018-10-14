@@ -234,7 +234,8 @@ public class Camera2BasicFragment extends Fragment
                 @Override
                 public void run() {
                   greenPrice.setText(classifier.getPrice());
-                  textView.setText(classifier.getShoeName());
+                  String label = classifier.getShoeName() + "\n"+classifier.getReleaseDate();
+                  textView.setText(label);
                   redPrice.setText(classifier.gethighestBid());
                   green.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View arg0) {
