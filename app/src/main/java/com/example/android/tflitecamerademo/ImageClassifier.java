@@ -151,8 +151,8 @@ public class ImageClassifier {
               shoeName = "";
           }
           else if( checkAPI.contains(check)){
-              price ="$"+ jsonArray.getJSONObject(i).getString("retailPrice")+".00";
-              highestBid = "$"+jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid")+".00";
+              price ="US$"+ jsonArray.getJSONObject(i).getString("retailPrice")+".00";
+              highestBid = "US$"+jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid")+".00";
               releaseDate = jsonArray.getJSONObject(i).getString("releaseDate");
               shoeUrl = "https://stockx.com/"+jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
               shoeName = jsonArray.getJSONObject(i).getString("title");

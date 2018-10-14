@@ -233,11 +233,9 @@ public class Camera2BasicFragment extends Fragment
               new Runnable() {
                 @Override
                 public void run() {
-                  String price = "Price:" + classifier.getPrice();
-                  greenPrice.setText(price);
+                  greenPrice.setText(classifier.getPrice());
                   textView.setText(classifier.getShoeName());
-                  price = "Highest Bid" + classifier.gethighestBid();
-                  redPrice.setText(price);
+                  redPrice.setText(classifier.gethighestBid());
                   green.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View arg0) {
                       if(!classifier.getShoeUrl().equals("")){
