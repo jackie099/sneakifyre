@@ -236,7 +236,8 @@ public class Camera2BasicFragment extends Fragment
                   String price = "Price:" + classifier.getPrice();
                   greenPrice.setText(price);
                   textView.setText(classifier.getShoeName());
-
+                  price = "Highest Bid" + classifier.gethighestBid();
+                  redPrice.setText(price);
                   green.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View arg0) {
                       if(!classifier.getShoeUrl().equals("")){
@@ -335,6 +336,7 @@ public class Camera2BasicFragment extends Fragment
     textView = (TextView) view.findViewById(R.id.text);
     green = view.findViewById(R.id.green);
     greenPrice = view.findViewById(R.id.greenPrice);
+    redPrice = view.findViewById(R.id.redPrice);
   }
 
   /** Load the model and labels. */
