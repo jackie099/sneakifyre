@@ -43,13 +43,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="?attr/actionBarSize"
-        android:background="@color/bg">
+        android:background="@color/bg"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
             android:textColor="#FFF"
             android:textSize="20sp" />
 

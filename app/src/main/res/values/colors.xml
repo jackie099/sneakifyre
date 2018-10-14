@@ -18,4 +18,5 @@
     <color name="control_background">#cc4285f4</color>
     <color name="stockx_green">#509e30</color>
     <color name="stockx_red">#FF5A60</color>
+    <color name="bg">#7b505050</color>
 </resources>
