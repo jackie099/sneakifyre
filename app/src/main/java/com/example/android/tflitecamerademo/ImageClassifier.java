@@ -97,6 +97,9 @@ public class ImageClassifier {
               return (o1.getValue()).compareTo(o2.getValue());
             }
           });
+  public String getShoeUrl(){
+      return shoeUrl;
+  }
     private JSONObject jsonObject;
   /** Initializes an {@code ImageClassifier}. */
   ImageClassifier(Activity activity, JSONObject jsonObject) throws IOException {
@@ -112,6 +115,10 @@ public class ImageClassifier {
     Log.d(TAG, "Created a Tensorflow Lite Image Classifier.");
   }
 
+  private String shoeName = "";
+  public String getShoeName(){
+      return shoeName;
+  }
   /** Classifies a frame from the preview stream. */
   String classifyFrame(Bitmap bitmap) {
     if (tflite == null) {
@@ -132,17 +139,23 @@ public class ImageClassifier {
     String textToShow = printTopKLabels();
     try {
       JSONArray jsonArray = jsonObject.getJSONArray("Products");
-      String price = "";
-      String highestBid= "";
-      String releaseDate = "";
+
       for(int i =0; i < jsonArray.length() ; ++i){
           String check = labelKey.replaceAll("\\W","").toLowerCase();
           String checkAPI = jsonArray.getJSONObject(i).getString("title").replaceAll("\\W","").toLowerCase();
-          if(checkAPI.contains(check)){
-              price = jsonArray.getJSONObject(i).getString("retailPrice");
-              highestBid = jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid");
+          if(labelValue < .40){
+              price = "";
+              highestBid = "";
+              releaseDate = "";
+              shoeUrl = "";
+              shoeName = "";
+          }
+          else if( checkAPI.contains(check)){
+              price ="$"+ jsonArray.getJSONObject(i).getString("retailPrice")+".00";
+              highestBid = "$"+jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid")+".00";
               releaseDate = jsonArray.getJSONObject(i).getString("releaseDate");
-              shoeUrl = jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
+              shoeUrl = "https://stockx.com/"+jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
+              shoeName = jsonArray.getJSONObject(i).getString("title");
               break;
           }
       }
@@ -156,7 +169,19 @@ public class ImageClassifier {
     }
     return textToShow;
   }
+  private String price = "";
   private String shoeUrl = "";
+  private String highestBid = "";
+  private String releaseDate = "";
+  public String getPrice(){
+      return price;
+  }
+  public String gethighestBid(){
+      return highestBid;
+  }
+  public String getReleaseDate(){
+      return releaseDate;
+  }
   void applyFilter(){
     int num_labels =  labelList.size();
 
@@ -231,7 +256,8 @@ public class ImageClassifier {
     long endTime = SystemClock.uptimeMillis();
     Log.d(TAG, "Timecost to put values into ByteBuffer: " + Long.toString(endTime - startTime));
   }
-    public String labelKey;
+    private String labelKey;
+    private Float labelValue = 0.0f;
   /** Prints top-K labels, to be shown in UI as the results. */
   private String printTopKLabels() {
     for (int i = 0; i < labelList.size(); ++i) {
@@ -247,8 +273,9 @@ public class ImageClassifier {
       Map.Entry<String, Float> label = sortedLabels.poll();
       textToShow = String.format("\n%s: %4.2f",label.getKey(),label.getValue()) + textToShow;
       this.labelKey = label.getKey();
-
+      this.labelValue = label.getValue();
     }
     return textToShow;
   }
+
 }

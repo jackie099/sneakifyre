@@ -23,6 +23,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -42,6 +43,7 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -227,12 +229,28 @@ public class Camera2BasicFragment extends Fragment
               new Runnable() {
                 @Override
                 public void run() {
-                  textView.setText(text);
+                  String price = "Price:" + classifier.getPrice();
+                  greenPrice.setText(price);
+                  textView.setText(classifier.getShoeName());
+
+                  green.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View arg0) {
+                      if(!classifier.getShoeUrl().equals("")){
+                        Intent viewIntent =
+                                new Intent("android.intent.action.VIEW",
+                                        Uri.parse(classifier.getShoeUrl()));
+                        startActivity(viewIntent);
+                      }
+
+                    }
+                  });
 
                 }
               });
     }
   }
+
+
 
   /**
    * Resizes image.
@@ -302,13 +320,17 @@ public class Camera2BasicFragment extends Fragment
           LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     return inflater.inflate(R.layout.fragment_camera2_basic, container, false);
   }
-
+  private LinearLayout green;
+  private TextView greenPrice;
+  private TextView redPrice;
+  private LinearLayout red;
   /** Connect the buttons to their event handler. */
   @Override
   public void onViewCreated(final View view, Bundle savedInstanceState) {
     textureView = (AutoFitTextureView) view.findViewById(R.id.texture);
     textView = (TextView) view.findViewById(R.id.text);
-
+    green = view.findViewById(R.id.green);
+    greenPrice = view.findViewById(R.id.greenPrice);
   }
 
   /** Load the model and labels. */
