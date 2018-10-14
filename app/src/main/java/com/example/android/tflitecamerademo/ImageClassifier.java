@@ -153,7 +153,7 @@ public class ImageClassifier {
           else if( checkAPI.contains(check)){
               price ="$"+ jsonArray.getJSONObject(i).getString("retailPrice");
               highestBid = "$"+jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid");
-              releaseDate = "Release Date:"+jsonArray.getJSONObject(i).getString("releaseDate");
+              releaseDate = "Release Date: "+jsonArray.getJSONObject(i).getString("releaseDate");
               shoeUrl = "https://stockx.com/"+jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
               shoeName = jsonArray.getJSONObject(i).getString("title");
               break;
