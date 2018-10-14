@@ -6,4 +6,8 @@
 .DS_Store
 /build
 /captures
+/app/build/generated/
+/app/build/intermediates/
+/app/build/outputs/
+.idea/
 .externalNativeBuild

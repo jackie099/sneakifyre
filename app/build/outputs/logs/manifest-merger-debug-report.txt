@@ -136,6 +136,8 @@ MERGED from [org.tensorflow:tensorflow-lite:1.10.0] C:\Users\Kevin\.gradle\cache
 		ADDED from X:\github\sneakifyre\app\src\main\AndroidManifest.xml:32:9-45
 activity#com.example.android.tflitecamerademo.CameraActivity
 ADDED from X:\github\sneakifyre\app\src\main\AndroidManifest.xml:34:9-40:20
+	android:screenOrientation
+		ADDED from X:\github\sneakifyre\app\src\main\AndroidManifest.xml:34:86-122
 	android:label
 		ADDED from X:\github\sneakifyre\app\src\main\AndroidManifest.xml:35:19-51
 	android:name

@@ -124,10 +124,6 @@
         "source": "C:\\Users\\Kevin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.2.0.aar\\b8a8e126d54545f2b07626cecceb2f65\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "X:\\github\\sneakifyre\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fragment_camera2_basic.xml.flat",
-        "source": "X:\\github\\sneakifyre\\app\\src\\main\\res\\layout-land\\fragment_camera2_basic.xml"
-    },
-    {
         "merged": "X:\\github\\sneakifyre\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_text_cursor_material.xml.flat",
         "source": "C:\\Users\\Kevin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.2.0.aar\\b8a8e126d54545f2b07626cecceb2f65\\res\\drawable\\abc_text_cursor_material.xml"
     },

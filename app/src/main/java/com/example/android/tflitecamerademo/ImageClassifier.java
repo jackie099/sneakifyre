@@ -142,17 +142,21 @@ public class ImageClassifier {
               price = jsonArray.getJSONObject(i).getString("retailPrice");
               highestBid = jsonArray.getJSONObject(i).getJSONObject("market").getString("highestBid");
               releaseDate = jsonArray.getJSONObject(i).getString("releaseDate");
+              shoeUrl = jsonArray.getJSONObject(i).getString("shortDescription").toLowerCase();
               break;
           }
       }
 
       textToShow = textToShow+"\nPrice:$"+price+"\n" +
               "Highest Bid:$"+highestBid+"\nRelease Date:"+releaseDate;
+
+
     } catch (JSONException e) {
       e.printStackTrace();
     }
     return textToShow;
   }
+  private String shoeUrl = "";
   void applyFilter(){
     int num_labels =  labelList.size();
 
@@ -243,7 +247,6 @@ public class ImageClassifier {
       Map.Entry<String, Float> label = sortedLabels.poll();
       textToShow = String.format("\n%s: %4.2f",label.getKey(),label.getValue()) + textToShow;
       this.labelKey = label.getKey();
-      Log.i("zzzz",label.getKey());
 
     }
     return textToShow;
