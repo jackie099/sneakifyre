@@ -143,7 +143,9 @@ public class ImageClassifier {
       for(int i =0; i < jsonArray.length() ; ++i){
           String check = labelKey.replaceAll("\\W","").toLowerCase();
           String checkAPI = jsonArray.getJSONObject(i).getString("title").replaceAll("\\W","").toLowerCase();
-          if(labelValue < .33){
+          Log.i("confidence",Float.toString(labelValue));
+          Log.i("confidence",checkAPI);
+          if(labelValue < .26){
               price = "$ -";
               highestBid = "$ -";
               releaseDate = "";
