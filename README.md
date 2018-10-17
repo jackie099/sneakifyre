@@ -11,3 +11,7 @@ Android application that uses image recognition to classify a shoe and return it
 ## Authors
 - Zhenghui Li
 - Kevin Kye
+
+<img src="https://user-images.githubusercontent.com/14865439/47057830-61bbe600-d190-11e8-8202-4b4f8322cd5a.jpg" width="200" height="400"></img>
+## MHacks - Best use of StockX API
+<img src="https://user-images.githubusercontent.com/14865439/47058003-25d55080-d191-11e8-99e4-b7df1c04e142.png"></img>
